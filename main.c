@@ -9,7 +9,6 @@
 // including headers for GNL and ftprintf from my libft
 char *get_next_line(int fd);
 int ft_printf(char *placeholders, ...);
-int	ft_isalnum(int c);
 int	ft_atoi(const char *str);
 int	ft_strncmp(const char *s1, const char *s2, size_t n);
 
