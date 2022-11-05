@@ -20,10 +20,10 @@ int main(int argc, char **argv)
     int fd;
     char *result = malloc(100);
 
-    if (argc > 2 && argc < 5)
+    if (argc > 2)
     {
       fd = open(argv[3], O_RDONLY);
-      if (ft_strncmp(argv[1], "-l", argc) == 0)
+      if (ft_strncmp(argv[1], "-l", argc) == 0 && argc < 5)
       {
           result = get_next_line(fd);
           for (int i = 0; i < ft_atoi(argv[2]) && result != NULL; i++)
