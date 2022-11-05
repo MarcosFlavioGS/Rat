@@ -1,5 +1,4 @@
 #include <fcntl.h>
-#include <stdlib.h>
 #include <unistd.h>
 
 #ifndef BUFFER_SIZE
@@ -17,36 +16,34 @@ int main(int argc, char **argv)
   if (argc > 1)
   {
     int fd;
-    char *result = malloc(100);
+    char *result;
 
     if (argc > 2)
     {
       fd = open(argv[3], O_RDONLY);
       if (ft_strncmp(argv[1], "-l", argc) == 0 && argc < 5)
       {
-          result = get_next_line(fd);
-          for (int i = 0; i < ft_atoi(argv[2]) && result != NULL; i++)
+        result = get_next_line(fd);
+        for (int i = 0; i < ft_atoi(argv[2]) && result != NULL; i++)
         {
           ft_printf("%s", result);
           result = get_next_line(fd);
         }
-      }
+       }
       else
       {
         ft_printf("Invalid arguments\n");
       }
-      free(result);
-    }
+   }
     else
     {
       fd = open(argv[1], O_RDONLY);
       result = get_next_line(fd);
       for (;result != NULL;)
-    {
-      ft_printf("%s", result);
-      result = get_next_line(fd);
-    }
-    free(result);
+      {
+        ft_printf("%s", result);
+        result = get_next_line(fd);
+      }
     }
     close(fd);
   }
