@@ -13,3 +13,7 @@ Or you can specify how many lines you want it to read:
 ```shell
 rat -l 2 <yourfile>
 ```
+You can also use the *head* option. It will read the first 15 lines of a file:
+```shell
+rat -h <yourfile>
+```
