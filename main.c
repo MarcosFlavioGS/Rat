@@ -10,7 +10,6 @@ char *get_next_line(int fd);
 int ft_printf(char *placeholders, ...);
 int	ft_atoi(const char *str);
 int	ft_strncmp(const char *s1, const char *s2, size_t n);
-int ft_isalnum(int c);
 
 void reader(int fd, char *str)
 {
