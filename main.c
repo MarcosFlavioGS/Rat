@@ -1,5 +1,6 @@
 #include <fcntl.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 #ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10000 
@@ -32,6 +33,7 @@ void reader(int fd, char *str)
     ft_printf("%s",result);
     result = get_next_line(fd);
   }
+  free(result);
 }
 
 int main(int argc, char **argv)
@@ -72,6 +74,7 @@ int main(int argc, char **argv)
         ft_printf("%s", result);
         result = get_next_line(fd);
       }
+      free(result);
     }
     close(fd);
   }
