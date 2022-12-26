@@ -31,6 +31,7 @@ void reader(int fd, char *str)
   for (int i = 0; i < lines && result; i++)
   {
     ft_printf("%s",result);
+    free (result);
     result = get_next_line(fd);
   }
   free(result);
@@ -72,6 +73,7 @@ int main(int argc, char **argv)
       for (;result != NULL;)
       {
         ft_printf("%s", result);
+        free (result);
         result = get_next_line(fd);
       }
       free(result);
