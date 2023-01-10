@@ -17,7 +17,7 @@ void reader(int fd, char *str)
   if (fd == -1)
   {
     ft_printf("Error: file not found");
-    return ;
+    exit (1);
   }
   char *result;
   int  lines = ft_atoi(str);
@@ -25,7 +25,7 @@ void reader(int fd, char *str)
   if (lines < 0)
   {
     ft_printf("Error: invalid number of lines");
-    return ;
+    exit (1);
   }
   result = get_next_line(fd);
   for (int i = 0; i < lines && result; i++)
@@ -67,7 +67,7 @@ int main(int argc, char **argv)
       if (fd == -1)
       {
         ft_printf("Error: file %s not found", argv[1]);
-        return (0);
+        return (1);
       }
       result = get_next_line(fd);
       for (;result != NULL;)
