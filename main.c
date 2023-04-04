@@ -1,79 +1,63 @@
 #include <fcntl.h>
-#include <unistd.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 #ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10000 
+#define BUFFER_SIZE 10000
 #endif
 
 // including headers for GNL and ftprintf from my libft
 char *get_next_line(int fd);
 int ft_printf(char *placeholders, ...);
-int	ft_atoi(const char *str);
-int	ft_strncmp(const char *s1, const char *s2, size_t n);
+int ft_atoi(const char *str);
+int ft_strncmp(const char *s1, const char *s2, size_t n);
 
-void reader(int fd, char *str)
-{
-  if (fd == -1)
-  {
+void reader(int fd, char *str) {
+  if (fd == -1) {
     ft_printf("Error: file not found");
-    return ;
+    return;
   }
   char *result;
-  int  lines = ft_atoi(str);
+  int lines = ft_atoi(str);
 
-  if (lines < 0)
-  {
+  if (lines < 0) {
     ft_printf("Error: invalid number of lines");
-    return ;
+    return;
   }
   result = get_next_line(fd);
-  for (int i = 0; i < lines && result; i++)
-  {
-    ft_printf("%s",result);
-    free (result);
+  for (int i = 0; i < lines && result; i++) {
+    ft_printf("%s", result);
+    free(result);
     result = get_next_line(fd);
   }
   free(result);
 }
 
-int main(int argc, char **argv)
-{
-  if (argc > 1)
-  {
+int main(int argc, char **argv) {
+  if (argc > 1) {
     int fd;
     char *result;
 
-    if (argc > 2)
-    {
-      if (ft_strncmp(argv[1], "-l", 2) == 0)
-      {
+    if (argc > 2) {
+      if (ft_strncmp(argv[1], "-l", 2) == 0) {
         fd = open(argv[3], O_RDONLY);
         reader(fd, argv[2]);
-      }
-      else if (ft_strncmp(argv[1], "-h", 2) == 0)
-      {
+      } else if (ft_strncmp(argv[1], "-h", 2) == 0) {
         fd = open(argv[2], O_RDONLY);
         reader(fd, "15");
-      }
-      else
-      {
+      } else {
         ft_printf("Invalid arguments\n");
       }
-    }
-    else
-    {
+    } else {
       fd = open(argv[1], O_RDONLY);
-      if (fd == -1)
-      {
+      if (fd == -1) {
         ft_printf("Error: file %s not found", argv[1]);
         return (0);
       }
       result = get_next_line(fd);
-      for (;result != NULL;)
-      {
+      for (; result;) {
         ft_printf("%s", result);
-        free (result);
+        free(result);
         result = get_next_line(fd);
       }
       free(result);
