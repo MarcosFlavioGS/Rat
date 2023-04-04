@@ -15,22 +15,16 @@ int ft_strncmp(const char *s1, const char *s2, size_t n);
 void reader(int fd, char *str) {
   if (fd == -1) {
     ft_printf("Error: file not found");
-<<<<<<< HEAD
     return;
-=======
     exit (1);
->>>>>>> d0b9579dd40c522525408f8fc0c80187b2f89279
   }
   char *result;
   int lines = ft_atoi(str);
 
   if (lines < 0) {
     ft_printf("Error: invalid number of lines");
-<<<<<<< HEAD
     return;
-=======
     exit (1);
->>>>>>> d0b9579dd40c522525408f8fc0c80187b2f89279
   }
   result = get_next_line(fd);
   for (int i = 0; i < lines && result; i++) {
